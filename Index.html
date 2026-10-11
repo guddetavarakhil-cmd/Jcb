@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Injected code, this is not present in original code --><meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content" />
+    <script class="np4fiu7s">window.__consoleWorkerScript = "/np4fiu7s_console_worker.js";</script>
+    <script class="np4fiu7s" src="/np4fiu7s_console.js" crossorigin="anonymous"></script>
+    <script class="np4fiu7s">
+      if(window.eruda){
+        eruda.init({
+          theme: 'dark'
+        });
+
+        eruda._shadowRoot.querySelector('.eruda-entry-btn').style.display = 'none';
+
+        sessionStorage.setItem('__console_available', true);
+        document.addEventListener('showconsole', function () {eruda.show()});
+        document.addEventListener('hideconsole', function () {eruda.hide()});
+      }else if(document.querySelector('c-toggler')){
+        document.querySelector('c-toggler').style.display = 'none';
+      }
+      setTimeout(function(){
+        var scripts = document.querySelectorAll('.np4fiu7s');
+        scripts.forEach(function(el){document.head.removeChild(el)});
+      }, 0);
+    </script><!-- Injected code, this is not present in original code -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Code Generator</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" crossorigin="anonymous"></script>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #eef2ff;
+    padding: 25px;
+}
+.container {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 400px;
+    margin: auto;
+}
+button {
+    background: #4c35a5;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin: 10px;
+    font-size: 16px;
+}
+#qrcode {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+    <h2>😎 My QR Code</h2>
+    <p>Generate a QR code with a symbol.</p>
+
+    <button onclick="generateQR()">Generate QR Code</button>
+
+    <div id="qrcode"></div>
+
+    <button onclick="downloadQR()">Download QR Code</button>
+</div>
+
+<script>
+function generateQR() {
+    document.getElementById("qrcode").innerHTML = "";
+
+    new QRCode(document.getElementById("qrcode"), {
+        text: "🖕",
+        width: 250,
+        height: 250,
+        correctLevel: QRCode.CorrectLevel.H
+    });
+}
+
+function downloadQR() {
+    const qr = document.querySelector("#qrcode img");
+
+    if (qr) {
+        const link = document.createElement("a");
+        link.href = qr.src;
+        link.download = "my_symbol_qr.png";
+        link.click();
+    } else {
+        alert("First generate the QR code!");
+    }
+}
+</script>
+
+</body>
+</html>
